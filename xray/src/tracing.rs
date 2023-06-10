@@ -100,7 +100,7 @@ impl XRayTracer {
 
     fn is_meta_wrapper(&self, id: &Id) -> bool {
         match self.get_span_context(id) {
-            Some(context) => context.is_meta_wrapper
+            Some(context) => context.is_meta_wrapper,
             None => false
         }
     }
