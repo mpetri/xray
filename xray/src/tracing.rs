@@ -99,8 +99,10 @@ impl XRayTracer {
     }
 
     fn is_meta_wrapper(&self, id: &Id) -> bool {
-        self.get_span_context(id)
-            .is_some_and(|context| context.is_meta_wrapper)
+        match self.get_span_context(id) {
+            Some(context) => context.is_meta_wrapper
+            None => false
+        }
     }
 
     fn start_segment(&self, parent: &SpanContext) -> Subsegment {
